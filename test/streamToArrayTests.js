@@ -21,6 +21,8 @@ const getClosingStream = function () {
 const getClosedStream = function () {
   const closedStream = new PassThrough({ objectMode: true });
 
+  closedStream.write('foo');
+  closedStream.write('bar');
   closedStream.end();
 
   return closedStream;
@@ -76,18 +78,18 @@ suite('streamToArray', function () {
     });
   });
 
-  test('handles stream errors.', function (done) {
-    streamToArray(getFailingStream(), err => {
-      assert.that(err).is.not.null();
-      assert.that(err.message).is.equalTo('some-error');
+  test('also works with closed streams.', function (done) {
+    streamToArray(getClosedStream(), (err, array) => {
+      assert.that(err).is.null();
+      assert.that(array).is.equalTo([ 'foo', 'bar' ]);
       done();
     });
   });
 
-  test('returns an error if the stream is closed.', function (done) {
-    streamToArray(getClosedStream(), err => {
+  test('handles stream errors.', function (done) {
+    streamToArray(getFailingStream(), err => {
       assert.that(err).is.not.null();
-      assert.that(err.message).is.equalTo('Stream is closed.');
+      assert.that(err.message).is.equalTo('some-error');
       done();
     });
   });

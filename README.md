@@ -22,7 +22,7 @@ toArray(stream, (err, array) => {
 });
 ```
 
-If the stream emits an `error` event, the callback is handed over the error. Also, if the stream has already been closed, the callback is called with an error.
+If the stream emits an `error` event, the callback is handed over the error.
 
 ## Running the build
 
