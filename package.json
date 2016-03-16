@@ -23,6 +23,21 @@
     "type": "git",
     "url": "git://github.com/thenativeweb/streamtoarray.git"
   },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "plugins": [
+            "transform-es2015-block-scoping"
+          ],
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
   "keywords": [
     "array",
     "arrays",
