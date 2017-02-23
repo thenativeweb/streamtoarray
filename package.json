@@ -12,31 +12,16 @@
       "email": "matthias.wagler@thenativeweb.io"
     }
   ],
-  "main": "lib/streamToArray.js",
+  "main": "dist/streamToArray.js",
   "dependencies": {},
   "devDependencies": {
-    "assertthat": "0.6.0",
-    "gulp": "3.9.1",
-    "roboter": "0.4.8"
+    "assertthat": "0.8.3",
+    "roboter": "0.14.6",
+    "roboter-server": "0.14.6"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/thenativeweb/streamtoarray.git"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "plugins": [
-            "transform-es2015-block-scoping"
-          ],
-          "presets": [
-            "es2015"
-          ]
-        }
-      ]
-    ]
   },
   "keywords": [
     "array",
