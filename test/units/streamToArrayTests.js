@@ -1,22 +1,10 @@
 'use strict';
 
-const stream = require('stream');
+const { PassThrough } = require('stream');
 
 const assert = require('assertthat');
 
 const streamToArray = require('../../lib/streamToArray');
-
-const PassThrough = stream.PassThrough;
-
-const getClosingStream = function () {
-  const closingStream = new PassThrough({ objectMode: true });
-
-  process.nextTick(() => {
-    closingStream.end();
-  });
-
-  return closingStream;
-};
 
 const getClosedStream = function () {
   const closedStream = new PassThrough({ objectMode: true });
@@ -51,46 +39,31 @@ const getFailingStream = function () {
 };
 
 suite('streamToArray', () => {
-  test('is a function.', done => {
+  test('is a function.', async () => {
     assert.that(streamToArray).is.ofType('function');
-    done();
   });
 
-  test('throws an error if stream is missing.', done => {
-    assert.that(() => {
-      streamToArray();
-    }).is.throwing('Stream is missing.');
-    done();
+  test('throws an error if stream is missing.', async () => {
+    await assert.that(async () => {
+      await streamToArray();
+    }).is.throwingAsync('Stream is missing.');
   });
 
-  test('throws an error if callback is missing.', done => {
-    assert.that(() => {
-      streamToArray(getClosingStream());
-    }).is.throwing('Callback is missing.');
-    done();
+  test('converts the stream to an array.', async () => {
+    const array = await streamToArray(getStream());
+
+    assert.that(array).is.equalTo([ 'foo', 'bar' ]);
   });
 
-  test('converts the stream to an array.', done => {
-    streamToArray(getStream(), (err, array) => {
-      assert.that(err).is.null();
-      assert.that(array).is.equalTo([ 'foo', 'bar' ]);
-      done();
-    });
+  test('also works with closed streams.', async () => {
+    const array = await streamToArray(getClosedStream());
+
+    assert.that(array).is.equalTo([ 'foo', 'bar' ]);
   });
 
-  test('also works with closed streams.', done => {
-    streamToArray(getClosedStream(), (err, array) => {
-      assert.that(err).is.null();
-      assert.that(array).is.equalTo([ 'foo', 'bar' ]);
-      done();
-    });
-  });
-
-  test('handles stream errors.', done => {
-    streamToArray(getFailingStream(), err => {
-      assert.that(err).is.not.null();
-      assert.that(err.message).is.equalTo('some-error');
-      done();
-    });
+  test('handles stream errors.', async () => {
+    await assert.that(async () => {
+      await streamToArray(getFailingStream());
+    }).is.throwingAsync('some-error');
   });
 });
