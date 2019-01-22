@@ -4,7 +4,7 @@ const { PassThrough } = require('stream');
 
 const assert = require('assertthat');
 
-const streamToArray = require('../../lib/streamToArray');
+const streamToArray = require('../../src/streamToArray');
 
 const getClosedStream = function () {
   const closedStream = new PassThrough({ objectMode: true });
