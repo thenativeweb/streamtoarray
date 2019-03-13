@@ -10,32 +10,42 @@ $ npm install streamtoarray
 
 ## Quick start
 
-First you need to integrate streamtoarray into your application.
+First you need to integrate streamtoarray into your application:
 
 ```javascript
 const toArray = require('streamtoarray');
 ```
 
-Then you can call `toArray` with a stream. The stream gets converted and its contents are returned as an array once the stream has ended.
+Then you can call `toArray` with a stream. The stream gets converted and its contents are returned as an array once the stream has ended:
 
 ```javascript
 const array = await toArray(stream);
 ```
 
-If the stream emits an `error` event, an exception is thrown.
+If the stream emits an `error` event, an exception is thrown, and the partially parsed array is provided as the `array` property of the exception:
+
+```javascript
+try {
+  const array = await toArray(stream);
+} catch (ex) {
+  console.log(ex.array);
+
+  // ...
+}
+```
 
 ## Running the build
 
 To build this module use [roboter](https://www.npmjs.com/package/roboter).
 
 ```shell
-$ bot
+$ npx roboter
 ```
 
 ## License
 
 The MIT License (MIT)
-Copyright (c) 2016-2018 the native web.
+Copyright (c) 2016-2019 the native web.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

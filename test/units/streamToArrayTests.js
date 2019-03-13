@@ -38,6 +38,23 @@ const getFailingStream = function () {
   return failingStream;
 };
 
+const getStreamThatFailsAfterAWhile = function () {
+  const failingStream = new PassThrough({ objectMode: true });
+
+  process.nextTick(() => {
+    failingStream.write('foo');
+    failingStream.write('bar');
+
+    // Delay the stream error to give the client time to handle the already
+    // written data.
+    setTimeout(() => {
+      failingStream.emit('error', new Error('some-error'));
+    }, 0.1 * 1000);
+  });
+
+  return failingStream;
+};
+
 suite('streamToArray', () => {
   test('is a function.', async () => {
     assert.that(streamToArray).is.ofType('function');
@@ -65,5 +82,11 @@ suite('streamToArray', () => {
     await assert.that(async () => {
       await streamToArray(getFailingStream());
     }).is.throwingAsync('some-error');
+  });
+
+  test('provides the partially parsed stream in case of an error.', async () => {
+    await assert.that(async () => {
+      await streamToArray(getStreamThatFailsAfterAWhile());
+    }).is.throwingAsync(ex => ex.message === 'some-error' && ex.array.length === 2);
   });
 });
