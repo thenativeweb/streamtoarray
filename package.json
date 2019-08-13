@@ -12,11 +12,11 @@
       "email": "matthias.wagler@thenativeweb.io"
     }
   ],
-  "main": "dist/streamToArray.js",
+  "main": "lib/streamToArray.js",
   "dependencies": {},
   "devDependencies": {
-    "assertthat": "2.0.3",
-    "roboter": "4.0.2"
+    "assertthat": "3.2.0",
+    "roboter": "6.1.0"
   },
   "repository": {
     "type": "git",
