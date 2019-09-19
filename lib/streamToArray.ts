@@ -2,10 +2,6 @@ import { Readable } from 'stream';
 import StreamToArrayError from './StreamToArrayError';
 
 const streamToArray = async function (stream: Readable): Promise<any[]> {
-  if (!stream) {
-    throw new Error('Stream is missing.');
-  }
-
   const array = [];
 
   try {
