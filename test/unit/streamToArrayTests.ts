@@ -1,7 +1,7 @@
-import assert from 'assertthat';
+import { assert } from 'assertthat';
 import { PassThrough } from 'stream';
-import streamToArray from '../../lib/streamToArray';
-import StreamToArrayError from '../../lib/StreamToArrayError';
+import { StreamToArrayError } from '../../lib/StreamToArrayError';
+import { toArray } from '../../lib/streamToArray';
 
 const getClosedStream = function (): PassThrough {
   const closedStream = new PassThrough({ objectMode: true });
@@ -52,32 +52,28 @@ const getStreamThatFailsAfterAWhile = function (): PassThrough {
   return failingStream;
 };
 
-suite('streamToArray', (): void => {
-  test('is a function.', async (): Promise<void> => {
-    assert.that(streamToArray).is.ofType('function');
-  });
-
+suite('toArray', (): void => {
   test('converts the stream to an array.', async (): Promise<void> => {
-    const array = await streamToArray(getStream());
+    const array = await toArray(getStream());
 
     assert.that(array).is.equalTo([ 'foo', 'bar' ]);
   });
 
   test('also works with closed streams.', async (): Promise<void> => {
-    const array = await streamToArray(getClosedStream());
+    const array = await toArray(getClosedStream());
 
     assert.that(array).is.equalTo([ 'foo', 'bar' ]);
   });
 
   test('handles stream errors.', async (): Promise<void> => {
     await assert.that(async (): Promise<void> => {
-      await streamToArray(getFailingStream());
+      await toArray(getFailingStream());
     }).is.throwingAsync('some-error');
   });
 
   test('provides the partially parsed stream in case of an error.', async (): Promise<void> => {
     await assert.that(async (): Promise<void> => {
-      await streamToArray(getStreamThatFailsAfterAWhile());
+      await toArray(getStreamThatFailsAfterAWhile());
     }).is.throwingAsync((ex: Error): boolean => {
       const exCasted = ex as StreamToArrayError;
 

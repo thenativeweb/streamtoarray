@@ -23,13 +23,13 @@ $ npm install streamtoarray
 First you need to integrate streamtoarray into your application:
 
 ```javascript
-const toArray = require('streamtoarray').default;
+const { toArray } = require('streamtoarray');
 ```
 
 If you use TypeScript, use the following code instead:
 
 ```typescript
-import toArray from 'streamtoarray';
+import { toArray } from 'streamtoarray';
 ```
 
 Then you can call `toArray` with a stream. The stream gets converted and its contents are returned as an array once the stream has ended:

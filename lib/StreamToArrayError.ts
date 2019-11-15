@@ -8,4 +8,4 @@ class StreamToArrayError extends Error {
   }
 }
 
-export default StreamToArrayError;
+export { StreamToArrayError };

@@ -1,7 +1,7 @@
 import { Readable } from 'stream';
-import StreamToArrayError from './StreamToArrayError';
+import { StreamToArrayError } from './StreamToArrayError';
 
-const streamToArray = async function (stream: Readable): Promise<any[]> {
+const toArray = async function (stream: Readable): Promise<any[]> {
   const array = [];
 
   try {
@@ -17,4 +17,4 @@ const streamToArray = async function (stream: Readable): Promise<any[]> {
   return array;
 };
 
-export default streamToArray;
+export { toArray };
