@@ -8,8 +8,8 @@ const toArray = async function (stream: Readable): Promise<any[]> {
     for await (const item of stream) {
       array.push(item);
     }
-  } catch (ex) {
-    const error = new StreamToArrayError(ex.message, array);
+  } catch (ex: unknown) {
+    const error = new StreamToArrayError((ex as Error).message, array);
 
     throw error;
   }

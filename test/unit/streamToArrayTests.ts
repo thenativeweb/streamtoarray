@@ -35,7 +35,7 @@ const getFailingStream = function (): PassThrough {
   return failingStream;
 };
 
-const getStreamThatFailsAfterAWhile = function (): PassThrough {
+const getStreamThatFailsAfterSomeTime = function (): PassThrough {
   const failingStream = new PassThrough({ objectMode: true });
 
   process.nextTick((): void => {
@@ -73,7 +73,7 @@ suite('toArray', (): void => {
 
   test('provides the partially parsed stream in case of an error.', async (): Promise<void> => {
     await assert.that(async (): Promise<void> => {
-      await toArray(getStreamThatFailsAfterAWhile());
+      await toArray(getStreamThatFailsAfterSomeTime());
     }).is.throwingAsync((ex: Error): boolean => {
       const exCasted = ex as StreamToArrayError;
 
