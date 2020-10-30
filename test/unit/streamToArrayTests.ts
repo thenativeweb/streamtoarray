@@ -46,7 +46,7 @@ const getStreamThatFailsAfterSomeTime = function (): PassThrough {
     // written data.
     setTimeout((): void => {
       failingStream.emit('error', new Error('some-error'));
-    }, 0.1 * 1000);
+    }, 100);
   });
 
   return failingStream;
