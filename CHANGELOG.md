@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/thenativeweb/streamtoarray/compare/3.0.2...3.0.3) (2021-05-10)
+
+
+### Bug Fixes
+
+* bump hosted-git-info from 2.8.8 to 2.8.9 ([#282](https://github.com/thenativeweb/streamtoarray/issues/282)) ([1550f50](https://github.com/thenativeweb/streamtoarray/commit/1550f50c46f498a3bf1581ebc1746ac3a8c3a4d8))
+
 ## [3.0.2](https://github.com/thenativeweb/streamtoarray/compare/3.0.1...3.0.2) (2021-03-25)
 
 
