@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/thenativeweb/streamtoarray/compare/3.0.3...3.0.4) (2021-06-08)
+
+
+### Bug Fixes
+
+* bump glob-parent from 5.1.1 to 5.1.2 ([#295](https://github.com/thenativeweb/streamtoarray/issues/295)) ([36b716b](https://github.com/thenativeweb/streamtoarray/commit/36b716b180770f9f327550c0ec10486fe930394f))
+
 ## [3.0.3](https://github.com/thenativeweb/streamtoarray/compare/3.0.2...3.0.3) (2021-05-10)
 
 
