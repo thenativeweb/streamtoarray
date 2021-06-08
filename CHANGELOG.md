@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/thenativeweb/streamtoarray/compare/3.0.4...3.0.5) (2021-06-08)
+
+
+### Bug Fixes
+
+* bump trim-newlines from 3.0.0 to 3.0.1 ([#294](https://github.com/thenativeweb/streamtoarray/issues/294)) ([954be5f](https://github.com/thenativeweb/streamtoarray/commit/954be5fce26b2898c5dfd3199f2b663cf9c77e30))
+
 ## [3.0.4](https://github.com/thenativeweb/streamtoarray/compare/3.0.3...3.0.4) (2021-06-08)
 
 
