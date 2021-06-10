@@ -1,3 +1,10 @@
+## [3.0.6](https://github.com/thenativeweb/streamtoarray/compare/3.0.5...3.0.6) (2021-06-10)
+
+
+### Bug Fixes
+
+* bump normalize-url from 6.0.0 to 6.0.1 ([#296](https://github.com/thenativeweb/streamtoarray/issues/296)) ([ed4d2f6](https://github.com/thenativeweb/streamtoarray/commit/ed4d2f6b4a97532ee87708055b075520e614342b))
+
 ## [3.0.5](https://github.com/thenativeweb/streamtoarray/compare/3.0.4...3.0.5) (2021-06-08)
 
 
