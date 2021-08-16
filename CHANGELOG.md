@@ -1,3 +1,10 @@
+## [3.0.7](https://github.com/thenativeweb/streamtoarray/compare/3.0.6...3.0.7) (2021-08-16)
+
+
+### Bug Fixes
+
+* bump path-parse from 1.0.6 to 1.0.7 ([#308](https://github.com/thenativeweb/streamtoarray/issues/308)) ([21154fc](https://github.com/thenativeweb/streamtoarray/commit/21154fc1d371857ce71fba766a15771402061cd5))
+
 ## [3.0.6](https://github.com/thenativeweb/streamtoarray/compare/3.0.5...3.0.6) (2021-06-10)
 
 
